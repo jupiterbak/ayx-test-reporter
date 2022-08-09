@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/jupiterbak/ayx-test-reporter.git"
   },
   "keywords": [
     "actions",
@@ -34,7 +34,7 @@
     "@types/tryer": "^1.0.2",
     "@typescript-eslint/parser": "^5.33.0",
     "@vercel/ncc": "^0.31.1",
-    "eslint": "^7.32.0",
+    "eslint": "^8.21.0",
     "eslint-plugin-github": "^4.3.7",
     "eslint-plugin-jest": "^25.7.0",
     "jest": "^27.5.1",
