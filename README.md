@@ -1,7 +1,7 @@
 # Alteryx Test Reporter
   
-[![build-test](https://github.com/jupiterbak/ayx-test-reporter/actions/workflows/test.yml/badge.svg)](https://github.com/jupiterbak/ayx-test-reporter/actions/workflows/test.yml)  [![The MIT License](https://img.shields.io/github/license/jupiterbak/ayx-node)](./LICENSE) [![Total alerts](https://img.shields.io/lgtm/alerts/g/jupiterbak/ayx-test-reporter.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/jupiterbak/ayx-test-reporter/alerts/)
-[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/jupiterbak/ayx-test-reporter.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/jupiterbak/ayx-test-reporter/context:javascript)
+[![build-test](https://github.com/jupiterbak/ayx-test-reporter/actions/workflows/test.yml/badge.svg)](https://github.com/jupiterbak/ayx-test-reporter/actions/workflows/test.yml)  [![The MIT License](https://img.shields.io/github/license/jupiterbak/ayx-node)](./LICENSE) [![Total alerts](https://img.shields.io/lgtm/alerts/g/jupiterbak/ayx-node.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/jupiterbak/ayx-node/alerts/)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/jupiterbak/ayx-node.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/jupiterbak/ayx-node/context:javascript)
 [![GitHub release](https://img.shields.io/github/release/jupiterbak/ayx-test-reporter.svg)](https://github.com/jupiterbak/ayx-test-reporter/releases/latest)
 
 
