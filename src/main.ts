@@ -1,19 +1,19 @@
 import * as core from '@actions/core'
-import {AYXTestResults, main, wait} from './common'
+import {AYXTestResults, main} from './common'
 import {AlteryxSdk} from '@jupiterbak/ayx-node'
 import fs from 'fs'
 
 async function run(): Promise<void> {
   try {
     // read the inputs
-    const ms: string = core.getInput('milliseconds')
     const url: string = core.getInput('ayx-server-api-url')
     const clientId: string = core.getInput('ayx-server-client-id')
     const clientSecret: string = core.getInput('ayx-server-client-secret')
     const collectionName: string = core.getInput('collection-to-test')
+    const testReportFile = 'results.json'
 
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
-
+    // read test start time
+    const startTime = Date.now()
     // Instantiate the clients
     // Instantiate the library
     const sdk = new AlteryxSdk({
@@ -32,9 +32,8 @@ async function run(): Promise<void> {
       collectionName
     )
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
+    // Get Endtime
+    const endTime = Date.now()
 
     // create test report
     const tests = rslt.statuses.map((status, i) => {
@@ -150,9 +149,18 @@ async function run(): Promise<void> {
     }
 
     // Write results to file
-    fs.writeFileSync('results.json', JSON.stringify(test_result, null, 4))
+    fs.writeFileSync(testReportFile, JSON.stringify(test_result, null, 4))
 
-    core.setOutput('time', new Date().toTimeString())
+    // Generate the outputs
+    core.setOutput('time', endTime - startTime)
+    core.setOutput('passed', passes.length)
+    core.setOutput('failed', failures.length)
+    core.setOutput('skipped', pending.length)
+    core.setOutput('test-report-file', testReportFile)
+    core.setOutput(
+      'conclusion',
+      failures.length === 0 && pending.length === 0 ? 'success' : 'failure'
+    )
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }

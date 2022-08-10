@@ -144,12 +144,13 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             // read the inputs
-            const ms = core.getInput('milliseconds');
             const url = core.getInput('ayx-server-api-url');
             const clientId = core.getInput('ayx-server-client-id');
             const clientSecret = core.getInput('ayx-server-client-secret');
             const collectionName = core.getInput('collection-to-test');
-            core.debug(`Waiting ${ms} milliseconds ...`); // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
+            const testReportFile = 'results.json';
+            // read test start time
+            const startTime = Date.now();
             // Instantiate the clients
             // Instantiate the library
             const sdk = new ayx_node_1.AlteryxSdk({
@@ -161,9 +162,8 @@ function run() {
             const cClient = sdk.GetCollectionManagementClient();
             const jClient = sdk.GetJobManagementClient();
             const rslt = yield (0, common_1.main)(cClient, wClient, jClient, collectionName);
-            core.debug(new Date().toTimeString());
-            yield (0, common_1.wait)(parseInt(ms, 10));
-            core.debug(new Date().toTimeString());
+            // Get Endtime
+            const endTime = Date.now();
             // create test report
             const tests = rslt.statuses.map((status, i) => {
                 var _a;
@@ -269,8 +269,14 @@ function run() {
                 passes
             };
             // Write results to file
-            fs_1.default.writeFileSync('results.json', JSON.stringify(test_result, null, 4));
-            core.setOutput('time', new Date().toTimeString());
+            fs_1.default.writeFileSync(testReportFile, JSON.stringify(test_result, null, 4));
+            // Generate the outputs
+            core.setOutput('time', endTime - startTime);
+            core.setOutput('passed', passes.length);
+            core.setOutput('failed', failures.length);
+            core.setOutput('skipped', pending.length);
+            core.setOutput('test-report-file', testReportFile);
+            core.setOutput('conclusion', failures.length === 0 && pending.length === 0 ? 'success' : 'failure');
         }
         catch (error) {
             if (error instanceof Error)

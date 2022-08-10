@@ -18,10 +18,22 @@ inputs:
   collection-to-test: 
     required: true
     description: 'collection containing all the tests as workflows'
-  milliseconds: 
-    required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+outputs:
+  conclusion:
+    description: |
+      Final conclusion of the created check run:
+        - 'success' if no failed tests was found
+        - 'failure' if any failed test was found
+  passed:
+    description: Count of passed tests
+  failed:
+    description: Count of failed tests
+  skipped:
+    description: Count of skipped tests
+  time:
+    description: Test execution time [ms]
+  test-report-file:
+    description: Generate complete path of the test report as mocha json
 runs:
   using: 'node16'
   main: 'dist/index.js'
