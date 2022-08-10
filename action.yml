@@ -37,3 +37,6 @@ outputs:
 runs:
   using: 'node16'
   main: 'dist/index.js'
+branding:
+  color: orange
+  icon: check-square
