@@ -17,7 +17,7 @@ This [Github Action](https://github.com/features/actions) displays execute tests
 ✔️ Provides final `conclusion` and counts of `passed`, `failed` and `skipped` tests as output parameters
 
 
-Do you miss something or have an issur? Please create [Issue](https://github.com/jupiterbak/ayx-test-reporter/issues/new) or contribute with PR.
+Do you miss something or have an issue? Please create [Issue](https://github.com/jupiterbak/ayx-test-reporter/issues/new) or contribute with PR.
 
 
 ## Example
@@ -66,9 +66,6 @@ jobs:
 ```yaml
 - uses: jupiterbak/ayx-test-reporter@v1
   with:
-    # Name of the Check Run which will be created
-    name: ''
-
     # URL of the Alteryx server API.
     ayx-server-api-url: 'http://loxcalhost/webapi/'
 
