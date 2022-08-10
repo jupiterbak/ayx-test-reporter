@@ -1,8 +1,9 @@
-<p align="center">
-  <a href="https://github.com/actions/typescript-action/actions"><img alt="typescript-action status" src="https://github.com/actions/typescript-action/workflows/build-test/badge.svg"></a>
-</p>
-
 # Alteryx Test Reporter
+  
+[![build-test](https://github.com/jupiterbak/ayx-test-reporter/actions/workflows/test.yml/badge.svg)](https://github.com/jupiterbak/ayx-test-reporter/actions/workflows/test.yml)  [![The MIT License](https://img.shields.io/github/license/jupiterbak/ayx-node)](./LICENSE) [![Total alerts](https://img.shields.io/lgtm/alerts/g/jupiterbak/ayx-test-reporter.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/jupiterbak/ayx-test-reporter/alerts/)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/jupiterbak/ayx-test-reporter.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/jupiterbak/ayx-test-reporter/context:javascript)
+[![GitHub release](https://img.shields.io/github/release/jupiterbak/ayx-test-reporter.svg)](https://github.com/jupiterbak/ayx-test-reporter/releases/latest)
+
 
 This [Github Action](https://github.com/features/actions) displays execute tests (workflows) inside a collection on an Alteryx Server and display test results directly in GitHub.
 
@@ -36,7 +37,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2     # checkout the repo
       - name: Test Report
-        uses: jupiterbak/ayx-test-reporter@v1
+        uses: jupiterbak/ayx-test-reporter@v1.0.1
         with:
           ayx-server-api-url: 'http://loxcalhost/webapi/'
           ayx-server-client-id: '8DA78CE09C0E5D1abf4927846637f9a02e196b8eff52b61f03246ad16ad2c81125ef4a80920db80'
@@ -64,7 +65,7 @@ jobs:
 ## Usage
 
 ```yaml
-- uses: jupiterbak/ayx-test-reporter@v1
+- uses: jupiterbak/ayx-test-reporter@v1.0.1
   with:
     # URL of the Alteryx server API.
     ayx-server-api-url: 'http://loxcalhost/webapi/'
