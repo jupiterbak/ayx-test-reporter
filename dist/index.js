@@ -32,7 +32,7 @@ function wait(milliseconds) {
     });
 }
 exports.wait = wait;
-function main(cClient, wClient, jClient, collectionName) {
+function main(cClient, wClient, jClient, collectionName, args) {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
             // list and filter the collectionc by name
@@ -64,8 +64,11 @@ function main(cClient, wClient, jClient, collectionName) {
                 return workflow;
             })));
             // Post new Jobs
+            const questions = JSON.parse(args);
             const jobs = yield Promise.all(workflowIds.map((workflow) => __awaiter(this, void 0, void 0, function* () {
-                const job = yield wClient.PostNewJobV1(String(workflow), {});
+                const job = yield wClient.PostNewJobV1(String(workflow), {
+                    questions
+                });
                 return job;
             })));
             let completed = false;
@@ -148,6 +151,7 @@ function run() {
             const clientId = core.getInput('ayx-server-client-id');
             const clientSecret = core.getInput('ayx-server-client-secret');
             const collectionName = core.getInput('collection-to-test');
+            const args = core.getInput('args');
             const testReportFile = 'results.json';
             // read test start time
             const startTime = Date.now();
@@ -161,7 +165,7 @@ function run() {
             const wClient = sdk.GetWorkflowManagementClient();
             const cClient = sdk.GetCollectionManagementClient();
             const jClient = sdk.GetJobManagementClient();
-            const rslt = yield (0, common_1.main)(cClient, wClient, jClient, collectionName);
+            const rslt = yield (0, common_1.main)(cClient, wClient, jClient, collectionName, args);
             // Get Endtime
             const endTime = Date.now();
             // create test report

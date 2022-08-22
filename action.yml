@@ -18,6 +18,10 @@ inputs:
   collection-to-test: 
     required: true
     description: 'collection containing all the tests as workflows'
+  args:
+    required: true
+    description: JSON-Object arguments
+    default: '[{"name": "Bucket Name","value": "ayx-ml-ops-demo"},{"name": "Object Name","value": "00_data_ingestion/data/Data_In.csv"}]'
 outputs:
   conclusion:
     description: |

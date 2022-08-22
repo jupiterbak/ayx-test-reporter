@@ -10,6 +10,7 @@ async function run(): Promise<void> {
     const clientId: string = core.getInput('ayx-server-client-id')
     const clientSecret: string = core.getInput('ayx-server-client-secret')
     const collectionName: string = core.getInput('collection-to-test')
+    const args = core.getInput('args')
     const testReportFile = 'results.json'
 
     // read test start time
@@ -29,7 +30,8 @@ async function run(): Promise<void> {
       cClient,
       wClient,
       jClient,
-      collectionName
+      collectionName,
+      args
     )
 
     // Get Endtime

@@ -26,7 +26,8 @@ export async function main(
   cClient: CollectionManagementClient,
   wClient: WorkflowManagementClient,
   jClient: JobManagementClient,
-  collectionName: string
+  collectionName: string,
+  args: string
 ): Promise<AYXTestResults> {
   return new Promise(async resolve => {
     // list and filter the collectionc by name
@@ -65,9 +66,13 @@ export async function main(
       })
     )
     // Post new Jobs
+    const questions = JSON.parse(args)
+
     const jobs = await Promise.all(
       workflowIds.map(async workflow => {
-        const job = await wClient.PostNewJobV1(String(workflow), {})
+        const job = await wClient.PostNewJobV1(String(workflow), {
+          questions
+        })
         return job
       })
     )
