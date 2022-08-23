@@ -30,7 +30,7 @@
     "tryer": "^1.0.1"
   },
   "devDependencies": {
-    "@types/node": "^18.7.9",
+    "@types/node": "^18.7.10",
     "@types/tryer": "^1.0.2",
     "@typescript-eslint/parser": "^5.33.1",
     "@vercel/ncc": "^0.34.0",
